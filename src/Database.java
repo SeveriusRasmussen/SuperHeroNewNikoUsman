@@ -1,3 +1,5 @@
+// #6-7 user story
+
 import java.util.ArrayList;
 
 public class Database {
@@ -39,8 +41,4 @@ public class Database {
         }
         return superheroes;
     }
-
-
-
-
 }

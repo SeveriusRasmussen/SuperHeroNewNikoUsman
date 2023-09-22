@@ -1,3 +1,5 @@
+// #8 user story
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,6 +26,11 @@ public class UserInterface {
             System.out.println("7. Search for a superhero");
             System.out.println("8. Edit superhero");
             System.out.println("9. Exit program");
+
+            while (!keyboard.hasNextInt()) {
+                String text = keyboard.next();
+                System.out.println(text + " Is not a valid number, try again");
+            }
             choice = keyboard.nextInt();
 
             keyboard.nextLine(); //clearer scanneren
@@ -38,6 +45,11 @@ public class UserInterface {
                 System.out.println("Your superpower?");
                 String superPower = keyboard.nextLine();
                 System.out.println("What year did you get created?");
+                while (!keyboard.hasNextInt()) {
+                    String text = keyboard.next();
+                    System.out.println(text + " Is not a valid number, try again");
+                    System.out.println("What year did you get created?");
+                }
                 int yearCreated = keyboard.nextInt();
                 keyboard.nextLine();
                 System.out.println("Is your superhero human?");
@@ -117,10 +129,30 @@ public class UserInterface {
                         superheroDerSkalRedigeres.setSuperPower(nyVærdi);
                     }
                     System.out.println("Year created: " + superheroDerSkalRedigeres.getYearCreated());
-                    nyVærdi = keyboard.nextLine();
+                    do {
+                        nyVærdi = keyboard.nextLine();
+                        if (nyVærdi.isEmpty()) {
+                            break;
+                        } else {
+                            try {
+                                superheroDerSkalRedigeres.setYearCreated(Integer.parseInt(nyVærdi));
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Its not a valid number, try again");
+                            }
+                        }
+                    } while (true);
+                    /*while (!keyboard.hasNextInt()) {
+                        keyboard.nextLine();
+                        System.out.println("Its not a valid number, try again");
+                        System.out.println("Year created: " + superheroDerSkalRedigeres.getYearCreated());
+                    }
+                    nyVærdi = keyboard.next();
                     if (!nyVærdi.isEmpty()) {
                         superheroDerSkalRedigeres.setYearCreated(Integer.parseInt(nyVærdi));
-                    }
+                    } */
+
+                    //keyboard.nextLine();
                     System.out.println("Is Human: " + superheroDerSkalRedigeres.getIsHuman());
                     nyVærdi = keyboard.nextLine();
                     if (!nyVærdi.isEmpty()) {
@@ -131,7 +163,7 @@ public class UserInterface {
                     if (!nyVærdi.isEmpty()) {
                         superheroDerSkalRedigeres.setStrenght(nyVærdi);
                     }
-                    System.out.println(superheroDerSkalRedigeres + "is updated");
+                    System.out.println(superheroDerSkalRedigeres);
                 }
 
             }

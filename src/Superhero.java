@@ -1,9 +1,16 @@
-//Attributes
+// #6-7 user story
+
 public class Superhero {
+
+    //Attributes
     private String name;
     private String realName;
     private String superPower;
+    private int yearCreated;
+    private String isHuman;
+    private String strenght;
 
+    // This metode.
     public void setName(String name) {
         this.name = name;
     }
@@ -28,9 +35,7 @@ public class Superhero {
         this.strenght = strenght;
     }
 
-    private int yearCreated;
-    private String isHuman;
-    private String strenght;
+
 
     //konstruktør
     public Superhero(String name, String realName,
